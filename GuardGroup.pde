@@ -1,6 +1,6 @@
 public class GuardGroup
 {
-  private Guard[] GuardG
+  private Guard[] GuardG;
   
   public GuardGroup(int limit)
   {

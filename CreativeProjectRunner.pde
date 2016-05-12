@@ -25,9 +25,12 @@ boolean active;
 int playerInitX;
 int playerInitY;
 int guardNumber;
-int[][][] guardInit;
+ArrayList guards;
+IntList guardInitX;
+IntList guardInitY;
 Player P1;
 GuardGroup GG;
+Guard G;
 void setup()
 {
   size(800,600);
@@ -35,9 +38,12 @@ void setup()
   BG = new BlockGroup(40,31);
   active = true; 
   P1 = new Player(1,2,20);
+  G = new Guard(0, 0, P1, "");
+  guardInitX = new IntList();
+  guardInitY = new IntList();
+  guards = new ArrayList<Guard>();
   guardNumber = 0;
-  
-  GG = new GuardGroup()
+  GG = new GuardGroup(1);
   
   int[][] grid = 
   {//1,2,3,4,5,6,7,8,9,0,1,2,3,4,5,6,7,8,9,0,1,2,3,4,5,6,7,8,9,0,1,2,3,4,5,6,7,8,9,0
@@ -93,7 +99,9 @@ void setup()
         else if(grid[r][c] == 2)
         {
           guardNumber ++;
-          guardInit[][][] = int[guardNumber][r][c];
+          guards.add(new Guard(c, r, P1, "down"));
+          guardInitX.append(r);
+          guardInitY.append(c);
           BG.addBlock(new Block(c,r,true),c,r);
         }
         else {
@@ -114,6 +122,6 @@ void draw()
       BG.getBlock(c,r).placeBlock();
     }
   }
-  
+  G.placeGuard();
   P1.placePlayer();
 }
