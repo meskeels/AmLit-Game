@@ -44,7 +44,7 @@ public class Guard
   {
     for(int i = 0;i < guardNumber; i++)
   {
-    image(Image,guardInitY.get(guardNumber - 1)  *20,guardInitX.get(guardNumber - 1) * 20);
+    image(Image,guardInitY.get(i)  *20,guardInitX.get(i) * 20);
   }
   }
   
